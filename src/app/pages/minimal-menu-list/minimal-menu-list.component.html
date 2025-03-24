@@ -1,0 +1,29 @@
+<div class="menu-container">
+  <h1 class="menu-title">Our Menu</h1>
+
+  @for (category of getUniqueCategories(); track category) {
+    <div class="category-section">
+      <h2 class="category-title">{{category}}</h2>
+      
+      <div class="menu-items-grid">
+        @for (item of getItemsByCategory(category); track item.id) {
+          <div class="menu-item">
+            <div class="item-header">
+              <h3 class="item-name">{{item.name}}</h3>
+              <div class="item-badges">
+                @if (item.isVegetarian) {
+                  <span class="vegetarian-badge">VEG</span>
+                }
+                @if (item.isSpicy) {
+                  <span class="spicy-badge">SPICY</span>
+                }
+              </div>
+            </div>
+            <p class="item-price">₹{{item.price}}</p>
+            <p class="item-category">{{item.category}}</p>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
